@@ -1,12 +1,10 @@
 let boxes = document.querySelectorAll(".box");
-let resetbtn = document.querySelector(".reset-btn");
-let newGamebtn = document.querySelector(".newgamebtn");
+let newgamebtn = document.querySelector(".newgamebtn");
 let msgcontainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
-
-// variables
-let turn0 = true; 
-let count=0;     
+let gamecontainer=document.querySelector(".game-container")
+let turn0 = true;
+let count = 0;
 
 let winPattern = [
     [0, 1, 2],
@@ -25,21 +23,23 @@ boxes.forEach((box) => {
 
         if (turn0) {
             box.innerText = "O"
+            box.style.color = "#4ecdc4"
             turn0 = false;
         }
         else {
             box.innerText = "X"
+            box.style.color = "#ff6b6b"
             turn0 = true;
         }
         // here you NEEDN'T write turn0===true
         box.disabled = true;
         count++;
 
-       let isWinner=checkWinner();
-          // draw condition
-          if( count===9 && !isWinner){
+        let isWinner = checkWinner();
+        // draw condition
+        if (count === 9 && !isWinner) {
             gameDraw();
-          }      
+        }
     })
 })
 
@@ -52,25 +52,30 @@ checkWinner = () => {
         if (pos1val != "" && pos2val != "" && pos3val != "") {
             if (pos1val === pos2val && pos2val === pos3val) {
                 showWinner(pos1val);
+                hideGame();
                 return true;
-
             }
         }
     }
-
 }
-
+const hideGame=()=>{
+    gamecontainer.classList.add("hide");
+}
 const showWinner = (winner) => {
-    msg.innerText = `Congratulations!! Winner is ${winner}`;
+    if (winner === "X") {
+        msg.innerHTML = `<span id="congrats_color">Congratulations!!</span> <br> Winner is <span id="tic">${winner}</span>`;
+    } else {
+        msg.innerHTML = `<span id="congrats_color">Congratulations!!</span> <br> Winner is <span id="toe">${winner}</span>`;
+    }
     msgcontainer.classList.remove("hide");
     disablebox();
 }
 
-const gameDraw=()=>{
-    msg.innerText="Oops! It is a draw!"
+const gameDraw = () => {
+    msg.innerText = "Oops! It is a draw!"
     msgcontainer.classList.remove("hide");
     disablebox();
- }
+}
 
 const disablebox = () => {
     for (box of boxes) {
@@ -87,11 +92,10 @@ const enableboxes = () => {
 
 const resetgame = () => {
     turn0 = true;
-    count=0
+    count = 0
     enableboxes();
     msgcontainer.classList.add("hide")
+    gamecontainer.classList.remove("hide")
 }
-
-resetbtn.addEventListener("click", resetgame);
-newGamebtn.addEventListener("click", resetgame);
+newgamebtn.addEventListener("click", resetgame);
 

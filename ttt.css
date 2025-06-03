@@ -1,20 +1,32 @@
-*{
-    margin:0;
-    border:0;
+* {
+    margin: 0;
+    border: 0;
 }
 
-body{
-    background-color: rgb(233, 220, 245);
+body {
+    background-color:#f0f8ff;
     text-align: center;
+    font-family:'Bubblegum Sans', cursive;
 }
-.container{
-    height:70vh;
+
+#game-head {
+    margin-block: 2rem 1rem;
+    color: #1b1b36;
+}
+#tic{
+    color:#ef5b5b;
+}
+#toe{
+    color: #3ba39c;
+}
+.container {
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.game{
+
+.game {
     height: 60vmin;
     width: 60vmin;
     display: flex;
@@ -23,54 +35,58 @@ body{
     align-items: center;
     gap: 1.5vmin;
 }
-.box{
+
+.box {
     height: 18vmin;
-    width:18vmin;
-    background-color: rgb(116, 40, 50);
-    border-radius:1rem;
-    border: none;
-   color: beige;
-   font-size: 8vmin;
-   cursor: pointer;
-}
-
-
-.reset-btn{
-    padding:1rem;
-    font-size: 1.25rem;
-    background-color: black;
-    color:bisque;
+    width: 18vmin;
+    background-color:#1e1e2f;
     border-radius: 1rem;
     border: none;
+    color:#4ecdc4;
+    font-size: 8vmin;
     cursor: pointer;
+    transition: transform;
+    font-family:'Bubblegum Sans', cursive;
 }
-
-
+.box:hover{
+    transform: scale(1.05);
+}
 .newgamebtn{
-    margin-top: 2rem;
-    padding:1rem;
+    padding: 1rem;
     font-size: 1.25rem;
-    background-color: black;
-    color:bisque;
-    border-radius: 1rem;
-    border: none;
+    background-color: #ffe66d;
+    color: #1e1e2f;
+    border-radius: .5rem;
     cursor: pointer;
+    font-family:'Bubblegum Sans', cursive;
 }
 
-#msg{
+.newgamebtn {
     margin-top: 2rem;
-    font-size: 10vmin;
-    color: rgb(88, 4, 88);
 }
 
-.msg-container{
-    height:100vmin;
+#msg {
+    margin-top: 2rem;
+    font-size: 3rem;
+    color:#1e1e2f;
+}
+
+.msg-container {
+    height: 100vmin;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.hide{
+.hide {
     display: none;
+}
+#winner_color{
+    color:#3ba39c;   
+}
+
+#congrats_color{
+    color: blueviolet;
+    font-size:4rem ;
 }
